@@ -8,6 +8,7 @@ namespace ElevatorEngine
         public bool IsOnline { get; private set; }
         public int CurrentFloor { get; private set; }
         public bool DoorsOpened { get; private set; }
+        public bool IsMoving { get; private set; }
 
         public MyElevator(int numberOfFloors)
         {
@@ -44,6 +45,26 @@ namespace ElevatorEngine
             {
                 this.DoorsOpened = true;
             }
+
+            if (this.CurrentFloor > floor)
+            {
+                this.GoDown();
+            }
+
+            if (this.CurrentFloor < floor)
+            {
+                this.GoUp();
+            }
+        }
+
+        private void GoUp()
+        {
+            this.IsMoving = true;  
+        }
+
+        private void GoDown()
+        {
+            this.IsMoving = true;
         }
 
 
